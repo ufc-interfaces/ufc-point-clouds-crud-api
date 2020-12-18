@@ -1,0 +1,19 @@
+{
+  "name": "point-clouds-crud-api",
+  "version": "1.0.0",
+  "description": "API to upload,delete or edit point cloud registrations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/andsalves-dev/ufc-point-clouds-crud-api.git"
+  },
+  "author": "andsalves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andsalves-dev/ufc-point-clouds-crud-api/issues"
+  },
+  "homepage": "https://github.com/andsalves-dev/ufc-point-clouds-crud-api#readme"
+}
