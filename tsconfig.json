@@ -3,8 +3,13 @@
     "target": "es6",
     "module": "commonjs",
     "rootDir": "./",
+    "baseUrl": "./",
     "outDir": "./build",
     "esModuleInterop": true,
-    "strict": true
-  }
+    "strict": true,
+    "types" : ["express", "types.d.ts"]
+  },
+  "include": [
+    "./types"
+  ]
 }

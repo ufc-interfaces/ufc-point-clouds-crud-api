@@ -1,10 +1,11 @@
-import express from 'express';
-// rest of the code remains same
-const app = express();
-const port = 8880;
+import express, { Request, Response } from 'express'
+import { PORT } from './config'
+import routeMap from './handlers'
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+const app = express()
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at htts://localhost:${port}`);
-});
+routeMap.forEach(({ method, route, handler }) => app[method](route, handler))
+
+app.listen(PORT, () => {
+  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`)
+})
