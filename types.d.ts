@@ -10,5 +10,5 @@ type HandlerRouteMatcher = {
 type PointCloud = {
   id: number
   name: string
-  file: string
+  fileURL: string
 }

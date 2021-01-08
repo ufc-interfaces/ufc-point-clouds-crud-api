@@ -1,11 +1,15 @@
 import express from 'express'
 import { PORT } from './config'
 import routeMap from './handlers'
+import cors from 'cors'
+
 
 const app = express()
 
+// Enable cors
+app.use(cors())
 // Recognize json requests
-app.use(express.json())
+// app.use(express.json())
 
 // Maps routes to handlers
 routeMap.forEach(({ method, route, handler, middlewares}) => {
