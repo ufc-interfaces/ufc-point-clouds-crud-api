@@ -1,9 +1,9 @@
 import {default as createHandler} from './create-handler'
 import {default as indexHandler} from './index-handler'
+import {default as getAllHandler} from './get-all-handler'
 import {HandlerRouteMatcher} from '../types'
 import * as validators from './request-validators'
 import multer from 'multer'
-
 
 const storage = multer.diskStorage(
   {
@@ -21,6 +21,11 @@ const routeMap: Array<HandlerRouteMatcher> = [
     method: 'get',
     route: '/',
     handler: indexHandler
+  },
+  {
+    method: 'get',
+    route: '/api/point-clouds',
+    handler: getAllHandler
   },
   {
     method: 'post',

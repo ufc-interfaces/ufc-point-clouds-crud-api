@@ -1,12 +1,1 @@
-[
-  {
-    "id": 1,
-    "name": "My Test!!!",
-    "url": "/uploads/Capture1.png"
-  },
-  {
-    "id": 2,
-    "name": "My Test!!!",
-    "url": "/uploads/Capture2.png"
-  }
-]
+[{"id":1,"name":"My Test!!!","url":"/uploads/Capture1.png"},{"id":2,"name":"My Test!!!","url":"/uploads/Capture2.png"},{"id":null,"name":"My Test!!!","url":"/uploads/Image.png"},{"id":null,"name":"adas dasdasd","url":"/uploads/images_1_edit_cut2.jpg"},{"id":null,"name":"adas dasdasd","url":"/uploads/images_1_edit_cut2.jpg"}]

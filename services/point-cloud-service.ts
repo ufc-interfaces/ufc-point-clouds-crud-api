@@ -4,7 +4,7 @@ import fs from 'fs'
 const filesDir = `${process.env.PWD}/data`
 
 export default class PointCloudService {
-  createPointCloud(cloud: Omit<PointCloud, 'id' | 'fileURL'>, file: Express.Multer.File) {
+  createPointCloud(cloud: Omit<PointCloud, 'id' | 'url'>, file: Express.Multer.File) {
     const dataStr = fs.readFileSync(`${filesDir}/data.json`, { flag: 'a+' }).toString();
     let data = dataStr && JSON.parse(dataStr)
 
@@ -20,6 +20,17 @@ export default class PointCloudService {
     })
 
     fs.writeFileSync(`${filesDir}/data.json`, JSON.stringify(data))
+  }
+
+  getAll() {
+    const dataStr = fs.readFileSync(`${filesDir}/data.json`, { flag: 'a+' }).toString();
+    let data = dataStr && JSON.parse(dataStr)
+
+    if (!Array.isArray(data)) {
+      data = []
+    }
+
+    return data
   }
 
   updatePointCloud(data: Partial<PointCloud> & { id: number }) {
