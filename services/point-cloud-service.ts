@@ -11,7 +11,8 @@ export default class PointCloudService {
     if (!Array.isArray(data)) {
       data = []
     }
-    const lastId = Math.max(data.map((item: PointCloud) => Number(item.id)))
+
+    const lastId = Math.max(...data.map((item: PointCloud) => Number(item.id)).filter(Boolean))
 
     data.push({
       id: lastId + 1,

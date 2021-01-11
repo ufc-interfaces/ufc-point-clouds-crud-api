@@ -1,7 +1,7 @@
-import {default as createHandler} from './create-handler'
-import {default as indexHandler} from './index-handler'
-import {default as getAllHandler} from './get-all-handler'
-import {HandlerRouteMatcher} from '../types'
+import { default as createHandler } from './create-handler'
+import { default as indexHandler } from './index-handler'
+import { default as getAllHandler } from './get-all-handler'
+import { HandlerRouteMatcher } from '../types'
 import * as validators from './request-validators'
 import multer from 'multer'
 
@@ -29,7 +29,7 @@ const routeMap: Array<HandlerRouteMatcher> = [
   },
   {
     method: 'post',
-    middlewares: [...validators.createValidator, upload.single('file')],
+    middlewares: [upload.single('file'), ...validators.createValidator],
     route: '/api/point-clouds',
     handler: createHandler
   },
