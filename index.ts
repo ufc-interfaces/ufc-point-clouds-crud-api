@@ -8,6 +8,9 @@ const app = express()
 // Enable cors
 app.use(cors())
 
+// serve uploads folder as static
+app.use('/uploads', express.static('uploads'))
+
 // Maps routes to handlers
 routeMap.forEach(({ method, route, handler, middlewares}) => {
   app[method](route, middlewares || [], handler)

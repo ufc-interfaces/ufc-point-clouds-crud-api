@@ -1,6 +1,7 @@
 import { default as createHandler } from './create-handler'
 import { default as indexHandler } from './index-handler'
 import { default as getAllHandler } from './get-all-handler'
+import { default as getOneHandler } from './get-one-handler'
 import { HandlerRouteMatcher } from '../types'
 import * as validators from './request-validators'
 import multer from 'multer'
@@ -26,6 +27,11 @@ const routeMap: Array<HandlerRouteMatcher> = [
     method: 'get',
     route: '/api/point-clouds',
     handler: getAllHandler
+  },
+  {
+    method: 'get',
+    route: '/api/point-clouds/:id',
+    handler: getOneHandler
   },
   {
     method: 'post',

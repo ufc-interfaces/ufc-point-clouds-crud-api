@@ -5,4 +5,4 @@ yarn start;
 ```
 
 ### Available Docs (Postman)
-https://documenter.getpŧostman.com/view/152063/TVzRGHsg
+https://documenter.getpostman.com/view/152063/TVzRGHsg

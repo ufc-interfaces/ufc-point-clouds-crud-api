@@ -23,7 +23,7 @@ export default class PointCloudService {
     fs.writeFileSync(`${filesDir}/data.json`, JSON.stringify(data))
   }
 
-  getAll() {
+  getAll(): Array<PointCloud> {
     const dataStr = fs.readFileSync(`${filesDir}/data.json`, { flag: 'a+' }).toString();
     let data = dataStr && JSON.parse(dataStr)
 
@@ -32,6 +32,11 @@ export default class PointCloudService {
     }
 
     return data
+  }
+
+  getOne(id: number): PointCloud | null {
+    const data = this.getAll()
+    return data.find(cloud => cloud.id === id) || null
   }
 
   updatePointCloud(data: Partial<PointCloud> & { id: number }) {
