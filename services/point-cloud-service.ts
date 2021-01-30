@@ -43,9 +43,32 @@ export default class PointCloudService {
     return data.find(cloud => Number(cloud.id) === Number(id)) || null
   }
 
-  updatePointCloud(id: number, data: Partial<PointCloud>) {
-    // TODO
-    console.log('Oh, this is supposed to update a cloud.')
+  updatePointCloud(id: number, partialCloud: Partial<PointCloud>) {
+    const updatedCloud = this.getOne(id);
+
+    if (!updatedCloud) {
+      throw `Cloud with id "${id}" not found while trying to update`
+    }
+
+    if (!partialCloud || partialCloud === {}) {
+      throw 'No data provided to update the target cloud'
+    }
+
+    const validKeys = (Object.keys(updatedCloud) as Array<keyof typeof updatedCloud>).filter(key => key !== 'id')
+
+    validKeys.forEach(key => {
+      if (partialCloud[key] !== undefined) {
+        Object.assign(updatedCloud, { [key]: partialCloud[key] })
+      }
+    })
+
+    const newData = this.getAll().map(
+      cloud => String(cloud.id) === String(updatedCloud.id) ? updatedCloud : cloud
+    )
+
+    fs.writeFileSync(`${filesDir}/data.json`, JSON.stringify(newData))
+
+    return updatedCloud
   }
 
   deletePointCloud(id: number) {

@@ -2,13 +2,18 @@ import express from 'express'
 import { PORT } from './config'
 import routeMap from './handlers'
 import cors from 'cors'
+import bodyParser from 'body-parser'
 
 const app = express()
+
+// Parse request data
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Enable cors
 app.use(cors())
 
-// serve uploads folder as static
+// Serve uploads folder as static
 app.use('/uploads', express.static('uploads'))
 
 // Maps routes to handlers

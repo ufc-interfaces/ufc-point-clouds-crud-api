@@ -3,6 +3,7 @@ import { default as indexHandler } from './index-handler'
 import { default as getAllHandler } from './get-all-handler'
 import { default as getOneHandler } from './get-one-handler'
 import { default as deleteHandler } from './delete-handler'
+import { default as updateHandler } from './update-handler'
 import { HandlerRouteMatcher } from '../types'
 import * as validators from './request-validators'
 import multer from 'multer'
@@ -31,6 +32,7 @@ const routeMap: Array<HandlerRouteMatcher> = [
   },
   {
     method: 'get',
+    middlewares: [validators.cloudValidator],
     route: '/api/point-clouds/:id',
     handler: getOneHandler
   },
@@ -42,8 +44,15 @@ const routeMap: Array<HandlerRouteMatcher> = [
   },
   {
     method: 'delete',
-    route: '/api/point-clouds/:id',
+    middlewares: [validators.cloudValidator],
+    route: '/api/point-clouds',
     handler: deleteHandler
+  },
+  {
+    method: 'patch',
+    middlewares: [multer().none(), validators.cloudValidator],
+    route: '/api/point-clouds/:id',
+    handler: updateHandler
   },
 ]
 

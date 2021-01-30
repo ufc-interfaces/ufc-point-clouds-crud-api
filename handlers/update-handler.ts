@@ -2,22 +2,10 @@ import { RequestHandler } from 'express'
 import serviceContext from '../service-context'
 
 const handler: RequestHandler = (req, res) => {
-  const id = Number(req.params.id)
-
-  if (!id) {
-    return res.status(422).json({ errors: ['Invalid id route param'] });
-  }
-
   const pointCloudService = serviceContext.get('PointCloudService')
-  const cloud = pointCloudService.getOne(id)
+  const updatedCloud = pointCloudService.updatePointCloud(Number(req.params.id), req.body)
 
-  if (!cloud) {
-    return res.status(404).json({ errors: ['Cloud not found'] })
-  }
-
-  pointCloudService.updatePointCloud(id, req.body)
-
-  return res.status(200).json({ message: 'Point cloud deleted' })
+  return res.status(200).json(updatedCloud)
 }
 
 export default handler
