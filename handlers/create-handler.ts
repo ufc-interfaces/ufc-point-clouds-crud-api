@@ -10,9 +10,9 @@ const handler: RequestHandler = (req, res) => {
 
   const pointCloudService = serviceContext.get('PointCloudService');
 
-  pointCloudService.createPointCloud(req.body, req.file);
+  const cloud = pointCloudService.createPointCloud(req.body, req.file);
 
-  return res.status(201).send()
+  return res.status(201).json(cloud)
 }
 
 export default handler
