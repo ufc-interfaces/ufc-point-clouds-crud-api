@@ -45,7 +45,7 @@ const routeMap: Array<HandlerRouteMatcher> = [
   {
     method: 'delete',
     middlewares: [validators.cloudValidator],
-    route: '/api/point-clouds',
+    route: '/api/point-clouds/:id',
     handler: deleteHandler
   },
   {
