@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.8.1",
     "multer": "^1.4.2",
+    "pontu-module": "file:pontu-packages/pontu-module",
     "servicemanager": "^0.13.5"
   },
   "devDependencies": {

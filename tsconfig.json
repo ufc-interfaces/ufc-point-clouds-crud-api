@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "allowJs": true,
     "module": "commonjs",
     "rootDir": "./",
     "baseUrl": "./",
     "outDir": "./build",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
-    "types" : ["express", "types.d.ts"]
+    "typeRoots": ["node_modules/@types"],
   },
-  "include": [
-    "./types"
-  ]
+  "include": ["src/**/*"]
 }

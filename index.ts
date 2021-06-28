@@ -1,6 +1,6 @@
 import express from 'express'
 import { PORT } from './config'
-import routeMap from './handlers'
+import routeMap from './src/handlers'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 
@@ -18,6 +18,7 @@ app.use('/uploads', express.static('uploads'))
 
 // Maps routes to handlers
 routeMap.forEach(({ method, route, handler, middlewares}) => {
+  // @ts-ignore
   app[method](route, middlewares || [], handler)
 })
 
