@@ -1,13 +1,7 @@
-// import fs from 'fs'
 import serviceContext from '../service-context'
 import PointCloudRestService from "./point-cloud-rest-service"
-import {Point3D} from "../@types/common";
+import { ClosestAlgoType, CloudJson, Matrix4 } from "../@types/common";
 import pontu from 'pontu-module'
-
-type CloudJson = {
-  numpts: number,
-  points: Array<Point3D>
-}
 
 const isValidCloudJson = (json: any) => {
   return typeof json?.numpts === 'number' && json?.points instanceof Array
@@ -32,9 +26,18 @@ export default class PointCloudPontuService {
     }
 
     pontu.cloud_save_sync(json, process.cwd() + cloud.url)
-    //
-    // fs.writeFileSync(process.cwd() + cloud.url, JSON.stringify(json));
 
     return cloud
+  }
+
+  registrationICP(
+    source: CloudJson,
+    target: CloudJson,
+    th: number,
+    k: number,
+    maxDist: number,
+    closestType: ClosestAlgoType,
+  ) {
+    return pontu.registration_icp_sync(source, target, th, k, maxDist, closestType);
   }
 }

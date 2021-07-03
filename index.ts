@@ -18,7 +18,6 @@ app.use('/uploads', express.static('uploads'))
 
 // Maps routes to handlers
 routeMap.forEach(({ method, route, handler, middlewares}) => {
-  // @ts-ignore
   app[method](route, middlewares || [], handler)
 })
 

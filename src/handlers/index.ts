@@ -5,10 +5,10 @@ import { default as getOneHandler } from './get-one-handler'
 import { default as deleteHandler } from './delete-handler'
 import { default as updateHandler } from './update-handler'
 import { default as overrideFromJsonHandler } from './override-from-json-handler'
+import { default as registrationICPHandler } from './registration-icp-handler'
 import * as validators from './request-validators'
 import multer from 'multer'
-import { RequestHandler } from "express";
-import {overrideFromJsonValidator} from "./request-validators";
+import { HandlerRouteMatcher } from "../@types/common";
 
 const storage = multer.diskStorage(
   {
@@ -21,13 +21,8 @@ const storage = multer.diskStorage(
 
 const upload = multer({ storage })
 
-type HandlerRouteMatcher = {
-  method: 'all' | 'get' | 'post' | 'put' | 'delete' | 'patch' | 'options' | 'head'
-  route: string
-  middlewares?: Array<RequestHandler>
-  handler: RequestHandler
-}
-
+// @ts-ignore
+// @ts-ignore
 const routeMap: Array<HandlerRouteMatcher> = [
   // Rest calls
   {
@@ -71,6 +66,12 @@ const routeMap: Array<HandlerRouteMatcher> = [
     middlewares: [multer().none(), ...validators.overrideFromJsonValidator],
     route: '/api/point-clouds/override-from-json/:id',
     handler: overrideFromJsonHandler
+  },
+  {
+    method: 'post',
+    middlewares: [multer().none()],
+    route: '/api/point-clouds/registration-icp',
+    handler: registrationICPHandler
   },
 ]
 
