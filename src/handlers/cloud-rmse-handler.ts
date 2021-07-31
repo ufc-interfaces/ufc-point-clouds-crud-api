@@ -23,7 +23,7 @@ const handler: RequestHandler = (req, res) => {
 
   const result = pointCloudPontuService.cloudRMSE(...rmseArgs)
 
-  return res.status(200).json(result)
+  return res.status(200).json({ rsme: result })
 }
 
 export default handler
