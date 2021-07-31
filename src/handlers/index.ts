@@ -6,6 +6,7 @@ import { default as deleteHandler } from './delete-handler'
 import { default as updateHandler } from './update-handler'
 import { default as overrideFromJsonHandler } from './override-from-json-handler'
 import { default as registrationICPHandler } from './registration-icp-handler'
+import { default as cloudRMSEHandler } from './cloud-rmse-handler'
 import * as validators from './request-validators'
 import multer from 'multer'
 import { HandlerRouteMatcher } from "../@types/common";
@@ -72,6 +73,12 @@ const routeMap: Array<HandlerRouteMatcher> = [
     middlewares: [multer().none()],
     route: '/api/point-clouds/registration-icp',
     handler: registrationICPHandler
+  },
+  {
+    method: 'post',
+    middlewares: [multer().none()],
+    route: '/api/point-clouds/cloud-rmse',
+    handler: cloudRMSEHandler
   },
 ]
 

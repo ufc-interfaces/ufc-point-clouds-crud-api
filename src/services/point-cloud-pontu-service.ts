@@ -1,6 +1,6 @@
 import serviceContext from '../service-context'
 import PointCloudRestService from "./point-cloud-rest-service"
-import { ClosestAlgoType, CloudJson, Matrix4 } from "../@types/common";
+import { ClosestAlgoType, CloudJson } from "../@types/common";
 import pontu from 'pontu-module'
 
 const isValidCloudJson = (json: any) => {
@@ -39,5 +39,14 @@ export default class PointCloudPontuService {
     closestType: ClosestAlgoType,
   ) {
     return pontu.registration_icp_sync(source, target, th, k, maxDist, closestType);
+  }
+
+  cloudRMSE(
+    source: CloudJson,
+    target: CloudJson,
+    maxDist: number,
+    closestType: ClosestAlgoType,
+  ) {
+    return pontu.cloud_rmse(source, target, maxDist, closestType);
   }
 }

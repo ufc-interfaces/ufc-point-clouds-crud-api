@@ -12,6 +12,13 @@ declare module 'pontu-module' {
     closestType: ClosestAlgoType
   ): {
     tm: Matrix4,
-    algnCloud: CloudJson
+    alignCloud: CloudJson
   };
+
+  function cloud_rmse(
+    source: CloudJson,
+    target: CloudJson,
+    maxDist: number,
+    closestType: ClosestAlgoType
+  ): number
 }
