@@ -47,6 +47,6 @@ export default class PointCloudPontuService {
     maxDist: number,
     closestType: ClosestAlgoType,
   ) {
-    return pontu.cloud_rmse(source, target, maxDist, closestType);
+    return pontu.cloud_rmse_sync(source, target, maxDist, closestType);
   }
 }

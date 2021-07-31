@@ -15,7 +15,7 @@ declare module 'pontu-module' {
     alignCloud: CloudJson
   };
 
-  function cloud_rmse(
+  function cloud_rmse_sync(
     source: CloudJson,
     target: CloudJson,
     maxDist: number,
